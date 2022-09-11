@@ -1,0 +1,143 @@
+@font-face {
+    font-family: "Mazius Review";
+    src: url(maziusreview-regular.woff2);
+}
+
+@font-face {
+    font-family: "Mazius Review";
+    font-style: italic;
+    src: url(maziusreview-extraitalic.woff2);
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+        transform: translate(0, 24px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes hyphen {
+    0% {
+        width: 0.5em;
+    }
+
+    100% {
+        width: 1em;
+    }
+}
+
+@keyframes blob {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+body {
+    font-family: Mazius Review;
+    font-size: 48px;
+    line-height: 1.25;
+    margin: 100vh 0 0 0;
+
+    background-color: #ffffff;
+    color: #000000;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 10vw;
+    font-style: italic;
+    animation: fadein 0.4s 1s both cubic-bezier(0.9, 0.03, 0.69, 0.22);
+}
+
+h2 {
+    max-width: 480px;
+    font-size: 36px;
+    text-align: center;
+    animation: fadein 0.4s 2s both cubic-bezier(0.9, 0.03, 0.69, 0.22);
+}
+
+header span {
+    background-color: #000000;
+    width: 1em;
+    height: 0.02em;
+    display: inline-block;
+    vertical-align: middle;
+    animation: hyphen 2s 1s infinite alternate cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+section {
+    padding: 200px;
+}
+
+figure {
+    max-width: 900px;
+    margin: 0 auto 0 auto;
+}
+
+figcaption {
+    margin: 24px 20% 0 0;
+}
+
+section img {
+    filter: grayscale(100%) brightness(125%) contrast(125%);
+}
+
+
+svg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+}
+
+path {
+    transform: scale(0);
+    transition: transform 5s;
+}
+
+g.blob.in-view path {
+    transform: scale(1);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: red;
+    background-image: linear-gradient(180deg, #ffffff, #f9868d, #8652ff, #ff4141, #ffffff);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #000000;
+}
+
+img.arrow {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
