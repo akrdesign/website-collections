@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:300;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    overflow-x: hidden;
+}
+
+.loader {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+}
+
+.heading {
+    font-size: 5vw;
+    text-align: center;
+    margin-top: 2vh;
+}
+
+.family {
+    display: flex;
+    margin: 100px 0;
+    transform: translate3d(0, 0, 0);
+    scrollbar-width: thin;
+
+    &:hover {
+        cursor: grab;
+    }
+
+    .family-item {
+        min-width: 50vw;
+        min-height: 80vh;
+        margin-left: 3.33333vw;
+
+        &:first-of-type {
+            margin-left: 0;
+        }
+
+        .family-item-image {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+
+            // &::before {
+            //     content: "";
+            //     display: block;
+            //     width: 100%;
+            //     padding-top: 150%;
+            //     pointer-events: none;
+            // }
+        }
+    }
+}
