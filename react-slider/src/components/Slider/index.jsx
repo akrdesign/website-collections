@@ -98,12 +98,12 @@ const Slider = () => {
 
     return (
         <Fragment>
-            <h1 className="heading">Interactive Momentum Scroller</h1>
-            <div className="family" ref={slider}>
+            <h1 className="heading">Interactive Momentum Slider</h1>
+            <div className="slider" ref={slider}>
                 {imagesUrl.map((url) => (
-                    <div className="family-item">
+                    <div className="slider-item">
                         <div
-                            className="family-item-image"
+                            className="slider-item-image"
                             style={{ backgroundImage: `url(${url})` }}
                         ></div>
                     </div>
