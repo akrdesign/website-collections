@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { Fragment } from "react";
+import React, { useContext, useEffect, useRef } from "react";
+import CustomCursorContext from "../CustomCursor/context/CustomCursorContext";
 
 const imagesUrl = [
     "https://images.unsplash.com/photo-1662659512148-35f5ca4ee2a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=749&q=80",
@@ -17,6 +17,7 @@ function clamp(value, lower, upper) {
 }
 
 const Slider = () => {
+    const { setType } = useContext(CustomCursorContext)
     const slider = useRef();
     const stateRef = useRef({
         hasMousePress: false,
@@ -27,12 +28,14 @@ const Slider = () => {
     });
 
     const mouseDown = (event) => {
+        setType("slider-drag")
         stateRef.current.hasMousePress = true;
         stateRef.current.startXPosition =
             event.pageX - stateRef.current.transformAmount;
         cancelMomentumTracking();
     };
     const mouseUp = () => {
+        setType("default")
         stateRef.current.hasMousePress = false;
         beginMomentumTracking();
     };
@@ -97,8 +100,6 @@ const Slider = () => {
     }, []);
 
     return (
-        <Fragment>
-            <h1 className="heading">Interactive Momentum Slider</h1>
             <div className="slider" ref={slider}>
                 {imagesUrl.map((url) => (
                     <div className="slider-item">
@@ -109,7 +110,6 @@ const Slider = () => {
                     </div>
                 ))}
             </div>
-        </Fragment>
     );
 };
 
