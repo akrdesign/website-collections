@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
+import { CursorContext } from '../components/CustomCursor/CursorManager'
 import "./style.scss"
-import CustomCursorContext from '../components/CustomCursor/context/CustomCursorContext'
 
 const Hamburger = () => {
-  const { setType } = useContext(CustomCursorContext)
+  const { setType } = useContext(CursorContext)
   return (
     <div
       className="hamburger-icon"

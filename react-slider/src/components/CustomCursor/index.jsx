@@ -1,10 +1,10 @@
 import React, { Fragment, useContext, useEffect, useRef } from "react";
-import CustomCursorContext from "./context/CustomCursorContext";
+import { CursorContext } from "./CursorManager";
 
 import "./styles.scss";
 
 const CustomCursor = () => {
-    const { type } = useContext(CustomCursorContext)
+    const { type } = useContext(CursorContext)
     const mainCursor = useRef(null);
     const secondaryCursor = useRef(null);
 
@@ -74,14 +74,14 @@ const CustomCursor = () => {
     }, []);
 
     return (
-        <Fragment>
-            <div className={`main-cursor ${type}`} ref={mainCursor}>
+        <div className={`cursor-wrapper ${type}`}>
+            <div className="main-cursor " ref={mainCursor}>
                 <div className="main-cursor-background"></div>
             </div>
             <div className="secondary-cursor" ref={secondaryCursor}>
                 <div className="cursor-background"></div>
             </div>
-        </Fragment>
+        </div>
     );
 };
 
