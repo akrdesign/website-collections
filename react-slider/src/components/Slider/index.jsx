@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef } from "react";
-import CustomCursorContext from "../CustomCursor/context/CustomCursorContext";
+import { CursorContext } from "../CustomCursor/CursorManager";
 
 const imagesUrl = [
     "https://images.unsplash.com/photo-1662659512148-35f5ca4ee2a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=749&q=80",
@@ -17,7 +17,7 @@ function clamp(value, lower, upper) {
 }
 
 const Slider = () => {
-    const { setType } = useContext(CustomCursorContext)
+    const { setType } = useContext(CursorContext)
     const slider = useRef();
     const stateRef = useRef({
         hasMousePress: false,
@@ -26,6 +26,10 @@ const Slider = () => {
         velocity: 0,
         requestAnimationId: 0,
     });
+
+    // const mouseEnter = () => {
+    //     setType("slider-hover")
+    // }
 
     const mouseDown = (event) => {
         setType("slider-drag")
@@ -40,9 +44,11 @@ const Slider = () => {
         beginMomentumTracking();
     };
     const mouseLeave = () => {
+        setType("default")
         stateRef.current.hasMousePress = false;
     };
     const mouseMove = (event) => {
+        setType("slider-hover")
         if (!stateRef.current.hasMousePress) return;
         const { pageX } = event;
         const distance = pageX - stateRef.current.startXPosition;
